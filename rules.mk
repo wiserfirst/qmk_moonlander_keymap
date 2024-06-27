@@ -1,3 +1,9 @@
+# Automatically update the keymap visualization when compiling
+# The '-' in front of keymapviz is used to ignore errors spewed by keymapviz.
+KEYMAP_FOLDER = keyboards/zsa/moonlander/keymaps/wiserfirst
+.PHONY: %
+%:
+	-keymapviz -k moonlander -r $(KEYMAP_FOLDER)/keymap.c -c $(KEYMAP_FOLDER)/visualisation/keymapviz.ini > /dev/null
 
 MOUSEKEY_ENABLE = yes
 LTO_ENABLE = yes
