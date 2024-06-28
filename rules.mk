@@ -4,6 +4,7 @@ KEYMAP_FOLDER = keyboards/zsa/moonlander/keymaps/wiserfirst
 .PHONY: %
 %:
 	-keymapviz -k moonlander -r $(KEYMAP_FOLDER)/keymap.c -c $(KEYMAP_FOLDER)/visualisation/keymapviz.ini > /dev/null
+	rm -f $(KEYMAP_FOLDER)/keymap.c.bac
 
 MOUSEKEY_ENABLE = yes
 LTO_ENABLE = yes
