@@ -86,20 +86,33 @@ enum custom_keycodes {
   L_ERB,
   R_ERB,
   // Emojis
+  BOW,
+  CAKE,
+  CK_MARK,
   CLAP,
   COFFEE,
+  EYES,
+  FACEPALM,
   L_ARROW,
   D_ARROW,
   R_ARROW,
   U_ARROW,
+  HEART,
+  HUNDRED,
   LAUGH,
   MINUS_ONE,
   NEUTRAL,
+  OKAY,
+  PRAY,
   PLUS_ONE,
   SAD,
   SINGLE_ARROW,
   SMILE,
+  TADA,
+  TEA,
+  THINK,
   TROLL,
+  WAVE,
   WINK,
   // MS Teams Emojis
   TM_100,
@@ -183,11 +196,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* .---------------------------------------------. .---------------------------------------------.
  * |       |     |     |     |     |     |       | !       |     |     |     |     |     |       |
  * !-------+-----+-----+-----+-----+-----+-------! !-------+-----+-----+-----+-----+-----+-------!
- * |       | 🩷  | 🎉  | 🤦  | 🤯  | 😮  |       | !       | 👏  |  7  |  8  |  9  | ☕️  |       |
+ * |       | 🩷  | 🎉  | 🤦  | 😔  | 😂  |       | !       | 👏  |  7  |  8  |  9  | ☕️  |       |
  * !-------+-----+-----+-----+-----+-----+-------! !-------+-----+-----+-----+-----+-----+-------!
  * |       | 👀  | ✅  | 💯  | 🙏  | 🙇  |       ! !       | 👋  |  4  |  5  |  6  | 😊  |  👍   |
  * !-------+-----+-----+-----+-----+-----+-------' '-------+-----+-----+-----+-----+-----+-------!
- * |       |     | 🎂  | 👌  | 🤔  | 🤞  |                 |  0  |  1  |  2  |  3  | 🍵  |       |
+ * |       |     | 🎂  | 👌  | 🤔  | 😉  |                 |  0  |  1  |  2  |  3  | 🍵  |       |
  * !-------+-----+-----+-----+-----+-----'                 '-----+-----+-----+-----+-----+-------!
  * |       |     |     |     |     |                             |     |     |     |     |       |
  * '-------------------------------'                             '-------------------------------'
@@ -200,11 +213,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Number/Emoji Layer
     [NUMBER] = LAYOUT(
           _______, _______, _______,  _______, _______,  _______, ___X___,       ___X___, _______, _______, _______, _______, _______, _______,
-          _______, TM_HEART,TM_TADA,  TM_PALM, TM_EXPH,  TM_SURP, _______,       _______, TM_CLAP, KC_P7,   KC_P8,   KC_P9,   TM_COFE, _______,
-          _______, TM_EYES, TM_CMARK, TM_100,  TM_PRAY,  TM_BOW,  _______,       _______, TM_WAVE, KC_P4,   KC_P5,   KC_P6,   TM_SMILE,TM_P_ONE,
-          _______, _______, TM_CAKE,  TM_OKAY, TM_THINK, TM_CSFG,                         KC_P0,   KC_P1,   KC_P2,   KC_P3,   TM_TEA,  _______,
+          _______, HEART,   TADA,     FACEPALM,SAD,      LAUGH,   _______,       _______, CLAP,    KC_P7,   KC_P8,   KC_P9,   COFFEE,  _______,
+          _______, EYES,    CK_MARK,  HUNDRED, PRAY,     BOW,     _______,       _______, WAVE,    KC_P4,   KC_P5,   KC_P6,   SMILE,  PLUS_ONE,
+          _______, _______, CAKE,     OKAY,    THINK,    WINK,                            KC_P0,   KC_P1,   KC_P2,   KC_P3,   TEA,     _______,
           ___X___, ___X___, ___X___,  ___X___, ___X___,           _______,       _______,          ___X___, ___X___, ___X___, ___X___, ___X___,
-                                                   OPT_L,  OPT_R, _______,       _______, SF_OPT_L,SF_OPT_R
+                                               OPT_L,    OPT_R,   _______,       _______, SF_OPT_L,SF_OPT_R
           ),
 
 /* .---------------------------------------------. .---------------------------------------------.
@@ -276,6 +289,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("%>");
                 return false;
 
+            case BOW:
+                SEND_STRING(":bow:");
+                return false;
+
+            case CAKE:
+                SEND_STRING(":cake:");
+                return false;
+
+            case CK_MARK:
+                SEND_STRING(":white_check_mark:");
+                return false;
+
             case CLAP:
                 SEND_STRING(":clap:");
                 return false;
@@ -286,6 +311,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             case D_ARROW:
                 SEND_STRING(":arrow_down:");
+                return false;
+
+            case FACEPALM:
+                SEND_STRING(":face_palm:");
+                return false;
+
+            case HEART:
+                SEND_STRING(":heart:");
                 return false;
 
             case LAUGH:
@@ -304,8 +337,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(":neutral:");
                 return false;
 
+            case OKAY:
+                SEND_STRING(":ok_hand:");
+                return false;
+
             case PLUS_ONE:
                 SEND_STRING(":+1:");
+                return false;
+
+            case PRAY:
+                SEND_STRING(":pray:");
                 return false;
 
             case R_ARROW:
@@ -320,12 +361,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(":smile:");
                 return false;
 
+            case TADA:
+                SEND_STRING(":tada:");
+                return false;
+
+            case TEA:
+                SEND_STRING(":tea:");
+                return false;
+
+            case THINK:
+                SEND_STRING(":thinking_face:");
+                return false;
+
             case TROLL:
                 SEND_STRING(":trollface:");
                 return false;
 
             case U_ARROW:
                 SEND_STRING(":arrow_up:");
+                return false;
+
+            case WAVE:
+                SEND_STRING(":wave:");
                 return false;
 
             case WINK:
